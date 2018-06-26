@@ -1,7 +1,0 @@
-[0m[[0m[0minfo[0m] [0m[0m[32mBillGeneratorSpec:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mBill generator[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should Cola costs 0.5[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should Cola and coffee costs 1.5[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should Coffee costs 1.00[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m- should have ten per cent service charge when there is a food item *** FAILED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  2.5 was not equal to 3.75 (BillGeneratorSpec.scala:26)[0m[0m
