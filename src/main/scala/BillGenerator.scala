@@ -4,12 +4,11 @@ object BillGenerator {
 
   def bill(purchasedItems : List[String]) = {
 
-    val allItems = purchasedItems.map(item => menu(item) )
-    val total = allItems.sum
-    if (allItems.contains("Cheese Sandwich"))
-      total + (total / 100 * 20)
-    else
-      total
+    val purchasedItemPrices = purchasedItems.map(item => menu(item) )
+    val total = purchasedItemPrices.sum
+
+    if (purchasedItems.contains("Cheese Sandwich")) total * 1.2
+    else total
   }
 
 }
