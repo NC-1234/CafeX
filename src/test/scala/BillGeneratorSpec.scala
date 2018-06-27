@@ -22,6 +22,10 @@ class BillGeneratorSpec extends WordSpec with Matchers {
     "have ten per cent service charge when there is a food item" in {
       BillGenerator.bill(List("Cheese Sandwich", "Cola")) shouldEqual 2.75
     }
+
+    "have twenty per cent service charge when there is a premium item" in {
+      BillGenerator.bill(List("Steak Sandwich", "Cola", "Cola", "Lobster")) shouldEqual 18.00
+    }
   }
 
 }
