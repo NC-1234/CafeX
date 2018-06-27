@@ -11,15 +11,16 @@ class BillGeneratorSpec extends WordSpec with Matchers {
   "Bill generator" should {
 
     "have a drink cost of 0.5" in {
-      BillGenerator.bill(List("Cola")) shouldEqual 0.5
+      BillGenerator.bill(List("Cola")) shouldEqual 0.50
     }
 
     "have two drinks cost 1.5" in {
-      BillGenerator.bill(List("Cola", "Coffee")) shouldEqual 1.5
+      BillGenerator.bill(List
+      ("Cola", "Coffee")) shouldEqual 1.50
     }
 
     "have ten per cent service charge when there is a food item" in {
-      BillGenerator.bill(List("Cheese Sandwich", "Cola")) shouldEqual 3.00
+      BillGenerator.bill(List("Cheese Sandwich", "Cola")) shouldEqual 2.75
     }
   }
 

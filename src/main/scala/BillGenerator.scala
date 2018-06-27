@@ -1,19 +1,20 @@
+import ServiceChargeCategory.{Drink, Food}
+
 object BillGenerator {
 
-  //TODO change this menu to use the case class MenuItem
-  val menu = Map("Cola" -> 0.50, "Coffee" -> 1.00 , "Cheese Sandwich" -> 2.00, "Steak Sandwich" -> 4.50)
+  val menu = Map(
+    "Cola" -> MenuItem("Cola", 0.50, Drink),
+    "Coffee" -> MenuItem("Coffee", 1.00, Drink),
+    "Cheese Sandwich" -> MenuItem("Cheese Sandwich", 2.00, Food),
+    "Steak Sandwich" -> MenuItem("Steak Sandwich", 4.50, Food),
+  )
 
-  def bill(purchasedItems : List[String]) = {
+  def bill(purchasedItems : List[String]): BigDecimal = {
+    def totalCost: BigDecimal = purchasedItems.foldLeft(BigDecimal(0))((tot, p) => tot + menu(p).price)
+    def serviceChargeRate: BigDecimal = if (purchasedItems.exists(name => menu(name).serviceChargeCategory == Food)) 1.1 else 1.0
 
-    //use sum or foldLeft - you dont need to map
-    val purchasedItemPrices = purchasedItems.map(item => menu(item) )
-    val total = purchasedItemPrices.sum
-
-    //also - think do I want the service charge to be a function - having a function that does several things isnt good
-    //maybe use an inner function?
-    //TODO Use some discriminator rather than the name of the item - you have something in the case class right?
-    if (purchasedItems.contains("Cheese Sandwich")) total * 1.2
-    else total
+    totalCost * serviceChargeRate
   }
 
 }
+ 
