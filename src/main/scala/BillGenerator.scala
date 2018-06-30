@@ -13,12 +13,13 @@ object BillGenerator {
   def bill(purchasedItems: List[String]): BigDecimal = {
     def totalCost: BigDecimal = purchasedItems.foldLeft(BigDecimal(0))((tot, p) => tot + menu(p).price)
 
-    def serviceChargeRate: BigDecimal = if (purchasedItems.exists(name => menu(name).serviceChargeCategory == PremiumItem)) 1.2
-    else if (purchasedItems.exists(name => menu(name).serviceChargeCategory == Food)) 1.1
-    else 1.0
+    def serviceChargeRate: BigDecimal = purchasedItems.map { menu(_).serviceChargeCategory match {
+      case PremiumItem => BigDecimal("1.2")
+      case Food => BigDecimal("1.1")
+      case _ => BigDecimal("1.0")
+    }}.max
 
     totalCost * serviceChargeRate
   }
-
 }
  
